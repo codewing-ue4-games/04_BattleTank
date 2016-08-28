@@ -29,3 +29,10 @@ ATank* ATankAIController::GetPlayerTank() const {
 	}
 }
 
+void ATankAIController::Tick(float DeltaTime) {
+	Super::Tick(DeltaTime);
+	if (GetPlayerTank()) { 
+		GetPlayerTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
+}
+
