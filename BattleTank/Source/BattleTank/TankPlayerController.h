@@ -19,7 +19,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	float CrossHairXLocation = 0.5f;
 	UPROPERTY(EditAnywhere)
-	float CrossHairYLocation = 0.2f;
+	float CrossHairYLocation = 0.35f;
 	UPROPERTY(EditAnywhere)
 	float LineTraceRange = 1000000.0f; //10km
 
