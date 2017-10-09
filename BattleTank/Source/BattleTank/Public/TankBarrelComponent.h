@@ -18,7 +18,7 @@ public:
 	void Elevate(float TargetPitch);
 	
 	UPROPERTY(EditAnywhere)
-	float MaxDegreesPerSecond = 5.0f;
+	float MaxDegreesPerSecond = 10.0f;
 
 	UPROPERTY(EditAnywhere)
 	float MaxElevationDegrees = 40.0f;

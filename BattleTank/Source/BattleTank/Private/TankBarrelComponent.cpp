@@ -9,8 +9,7 @@ void UTankBarrelComponent::Elevate(float TargetPitch)
 	float NewPitch;
 	if (TargetPitch > RelativeRotation.Pitch) {
 		NewPitch = FMath::Min(TargetPitch, RelativeRotation.Pitch + MaxMovementThisFrame);
-	}
-	else if (TargetPitch < RelativeRotation.Pitch) {
+	} else {
 		NewPitch = FMath::Max(TargetPitch, RelativeRotation.Pitch - MaxMovementThisFrame);
 	}
 
