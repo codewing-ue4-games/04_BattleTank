@@ -5,10 +5,6 @@
 #include "TankAIController.h"
 
 
-ATank* ATankAIController::GetControlledTank() const {
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankAIController::BeginPlay() {
 	Super::BeginPlay();
 
@@ -21,6 +17,17 @@ void ATankAIController::BeginPlay() {
 	}
 }
 
+void ATankAIController::Tick(float DeltaTime) {
+	Super::Tick(DeltaTime);
+	if (GetPlayerTank()) {
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
+}
+
+ATank* ATankAIController::GetControlledTank() const {
+	return Cast<ATank>(GetPawn());
+}
+
 ATank* ATankAIController::GetPlayerTank() const {
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	if (!PlayerTank) {
@@ -30,10 +37,5 @@ ATank* ATankAIController::GetPlayerTank() const {
 	}
 }
 
-void ATankAIController::Tick(float DeltaTime) {
-	Super::Tick(DeltaTime);
-	if (GetPlayerTank()) { 
-		GetPlayerTank()->AimAt(GetPlayerTank()->GetActorLocation());
-	}
-}
+
 

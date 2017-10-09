@@ -5,9 +5,16 @@
 
 void UTankBarrelComponent::Elevate(float TargetPitch)
 {	
-	auto ClampedTargetPitch = FMath::Clamp<float>(TargetPitch, MinElevationDegrees, MaxElevationDegrees);
+	auto MaxMovementThisFrame = MaxDegreesPerSecond * GetWorld()->GetDeltaSeconds();
+	float NewPitch;
+	if (TargetPitch > RelativeRotation.Pitch) {
+		NewPitch = FMath::Min(TargetPitch, RelativeRotation.Pitch + MaxMovementThisFrame);
+	}
+	else if (TargetPitch < RelativeRotation.Pitch) {
+		NewPitch = FMath::Max(TargetPitch, RelativeRotation.Pitch - MaxMovementThisFrame);
+	}
 
-	UE_LOG(LogTemp, Warning, TEXT("(%s) AimDirection: %f"), *GetOwner()->GetName(), ClampedTargetPitch);
+	auto ClampedTargetPitch = FMath::Clamp<float>(NewPitch, MinElevationDegrees, MaxElevationDegrees);
 	
 	SetRelativeRotation(FRotator(ClampedTargetPitch, 0.0f, 0.0f));
 }
