@@ -42,3 +42,8 @@ void ATank::SetTurretReference(UTankTurretComponent* NewTurret)
 	TankAimingComponent->SetTurretReference(NewTurret);
 }
 
+void ATank::Fire()
+{
+	
+}
+
