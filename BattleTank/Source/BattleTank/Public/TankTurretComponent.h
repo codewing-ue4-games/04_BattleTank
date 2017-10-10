@@ -18,7 +18,7 @@ public:
 	void Rotate(float TargetYaw);
 
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float MaxDegreesPerSecond = 25.0f;
 	
 	
